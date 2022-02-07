@@ -2,14 +2,17 @@ import { Field, ObjectType } from '@nestjs/graphql';
 
 @ObjectType('User')
 export class UserPublic {
-  @Field({ nullable: false })
+  @Field()
   id: string;
 
-  @Field({ nullable: true })
+  @Field()
   name: string;
 
-  @Field({ nullable: true })
+  @Field()
   email: string;
+
+  @Field(() => [String])
+  roles: string[];
 
   @Field()
   createdAt: Date;

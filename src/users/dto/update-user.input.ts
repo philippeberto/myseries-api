@@ -1,4 +1,4 @@
-import { InputType, Field, PartialType } from '@nestjs/graphql';
+import { InputType, Field } from '@nestjs/graphql';
 
 @InputType()
 export class UpdateUserInput {
@@ -10,4 +10,7 @@ export class UpdateUserInput {
 
   @Field({ nullable: true })
   email: string;
+
+  @Field(() => [String], { nullable: true })
+  roles: string[];
 }

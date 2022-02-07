@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CreateUserInput } from './dto/create-user.input';
 import { UpdateUserInput } from './dto/update-user.input';
+import { UserPublic } from './dto/user';
 import { User } from './entities/user.entity';
 import { UserMapper } from './users.mapper';
 
@@ -13,16 +14,25 @@ export class UsersService {
     private userRepository: Repository<User>,
   ) {}
 
-  async create(createUserInput: CreateUserInput) {
-    return await this.userRepository.save(UserMapper.toEntity(createUserInput));
+  async create(user: UserPublic) {
+    const userDB = await this.userRepository.findOne(user.id);
+    if (userDB) {
+      throw new Error('User already exists.');
+    }
+    const created = await this.userRepository.save(UserMapper.toEntity(user));
+    return created;
   }
 
   findAll() {
     return this.userRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  async findOne(id: string) {
+    const user = await this.userRepository.findOne(id);
+    if (!user) {
+      throw new Error('User not found.');
+    }
+    return user;
   }
 
   async update(updateUserInput: UpdateUserInput) {
@@ -37,6 +47,7 @@ export class UsersService {
     }
     if (newUser.email) userToUpdate.email = newUser.email;
     if (newUser.name) userToUpdate.name = newUser.name;
+    if (newUser.roles) userToUpdate.roles = newUser.roles;
     return this.userRepository.save(userToUpdate);
   }
 
