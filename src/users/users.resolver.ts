@@ -14,8 +14,8 @@ export class UsersResolver {
   constructor(private readonly usersService: UsersService) {}
 
   @UseGuards(GqlAuthGuard)
-  @Mutation(() => UserPublic)
-  createUser(@AuthenticatedUser() user): Promise<UserPublic> {
+  @Mutation(() => Boolean)
+  createUser(@AuthenticatedUser() user) {
     return this.usersService.create(user);
   }
 

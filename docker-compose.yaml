@@ -52,7 +52,7 @@ services:
     container_name: ms-api
     image: ms-api
     build: .
-    entrypoint: sh -c "npm install && npm run start:debug"
+    entrypoint: sh -c "npm install && npm run start:dev"
     ports:
         - '3000:3000'
         - '3010:3010'

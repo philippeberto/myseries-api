@@ -19,8 +19,9 @@ export class UsersService {
     if (userDB) {
       throw new Error('User already exists.');
     }
-    const created = await this.userRepository.save(UserMapper.toEntity(user));
-    return created;
+
+    await this.userRepository.save(user);
+    return true;
   }
 
   async findAll() {

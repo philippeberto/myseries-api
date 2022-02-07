@@ -10,6 +10,7 @@ import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
 import { JwtStrategyService } from './auth/jwt-strategy.service';
 import { HttpModule } from '@nestjs/axios';
+import { SeriesModule } from './series/series.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { HttpModule } from '@nestjs/axios';
     HttpModule,
     AuthModule,
     UsersModule,
+    SeriesModule,
   ],
   controllers: [AppController, AuthController],
   providers: [AppService, AuthService, JwtStrategyService],
