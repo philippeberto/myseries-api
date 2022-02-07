@@ -19,7 +19,7 @@ export class UsersResolver {
     return this.usersService.create(user);
   }
 
-  @UseGuards(GqlAuthGuard, RoleGuard)
+  @UseGuards(GqlAuthGuard)
   @Query(() => [UserPublic])
   findAllUsers(@AuthenticatedUser() user) {
     return this.usersService.findAll();
