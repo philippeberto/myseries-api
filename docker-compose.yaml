@@ -12,7 +12,7 @@ services:
     volumes:
       - ./PostgreSQL:/var/lib/postgresql/data 
     extra_hosts:
-      - docker.host.interntal:host-gateway
+      - host.docker.interntal:host-gateway
       
   mspgadmin:
     image: dpage/pgadmin4
@@ -25,7 +25,7 @@ services:
     depends_on:
       - mspostgres
     extra_hosts:
-      - docker.host.interntal:host-gateway
+      - host.docker.interntal:host-gateway
 
   keycloak:
       image: quay.io/keycloak/keycloak
@@ -46,18 +46,18 @@ services:
       depends_on:
         - mspostgres
       extra_hosts:
-      - docker.host.interntal:host-gateway
+      - host.docker.interntal:host-gateway
 
   ms-api:
     container_name: ms-api
     image: ms-api
     build: .
-    entrypoint: sh -c "npm install && npm run start:dev"
+    entrypoint: sh -c "npm install && npm run start:debug"
     ports:
         - '3000:3000'
         - '3010:3010'
     extra_hosts:
-      - docker.host.interntal:host-gateway
+      - host.docker.interntal:host-gateway
     env_file:
         - './.env'
     volumes:

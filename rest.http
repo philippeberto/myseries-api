@@ -1,0 +1,19 @@
+POST http://localhost:8080/auth/realms/myseries/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+
+&grant_type=password
+&client_id=ms-users
+&client_secret=iPa0D1Lx8gJJpLgZU8Ay5VALld5rVW04
+&username=user1@user.com
+&password=123456
+
+
+###
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "username": "user1@user.com",
+    "password": "123456"
+}
