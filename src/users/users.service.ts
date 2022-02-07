@@ -23,8 +23,8 @@ export class UsersService {
     return created;
   }
 
-  findAll() {
-    return this.userRepository.find();
+  async findAll() {
+    return await this.userRepository.find();
   }
 
   async findOne(id: string) {
@@ -38,13 +38,11 @@ export class UsersService {
   async update(updateUserInput: UpdateUserInput) {
     const { id, ...newUser } = updateUserInput;
     console.log(newUser);
-    let userToUpdate = new UpdateUserInput();
-    try {
-      userToUpdate = await this.userRepository.findOne(id);
-    } catch (err) {
-      console.log(err);
+    let userToUpdate = await this.userRepository.findOne(id);
+    if (!userToUpdate) {
       throw new Error('User not found.');
     }
+
     if (newUser.email) userToUpdate.email = newUser.email;
     if (newUser.name) userToUpdate.name = newUser.name;
     if (newUser.roles) userToUpdate.roles = newUser.roles;

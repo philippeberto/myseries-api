@@ -15,7 +15,7 @@ export class User extends BaseEntity {
   @Column({ length: 250 })
   name: string;
 
-  @Column({ length: 450 })
+  @Column({ length: 450, unique: true })
   email: string;
 
   @Column('simple-array')
