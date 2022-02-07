@@ -8,7 +8,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
 import { AuthModule } from './auth/auth.module';
-import { JwtStrategyService } from './jwt/jwt-strategy.service';
+import { JwtStrategyService } from './auth/jwt-strategy.service';
 import { HttpModule } from '@nestjs/axios';
 
 @Module({
