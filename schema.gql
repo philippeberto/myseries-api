@@ -30,12 +30,23 @@ type FavoritePublic {
   favoritesList: [String!]!
 }
 
+type Status {
+  id: String!
+  userId: String!
+  imdbId: String!
+  value: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
 type Query {
   findAllUsers: [User!]!
   findUser(id: String!): User!
   findFavoritesByUser: FavoritePublic!
   findAllCommentByTitle(title: String!): [Comment!]!
   findOneComment(id: String!): Comment!
+  findStatusByImdbId(imdbId: String!): [Status!]!
+  findOneStatus(id: Int!): Status!
 }
 
 type Mutation {
@@ -47,6 +58,9 @@ type Mutation {
   createComment(input: CreateCommentInput!): Comment!
   updateComment(input: UpdateCommentInput!): Boolean!
   removeComment(id: Int!): Comment!
+  createStatus(input: CreateStatusInput!): Status!
+  updateStatus(input: UpdateStatusInput!): Boolean!
+  removeStatus(id: Int!): Boolean!
 }
 
 input UpdateUserInput {
@@ -64,4 +78,14 @@ input CreateCommentInput {
 input UpdateCommentInput {
   id: String!
   text: String!
+}
+
+input CreateStatusInput {
+  imdbId: String!
+  value: String!
+}
+
+input UpdateStatusInput {
+  id: String!
+  value: String!
 }

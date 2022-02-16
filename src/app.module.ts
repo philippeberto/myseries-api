@@ -11,6 +11,7 @@ import { JwtStrategyService } from './auth/jwt-strategy.service';
 import { HttpModule } from '@nestjs/axios';
 import { CommentsModule } from './comments/comments.module';
 import { FavoritesModule } from './favorites/favorites.module';
+import { StatusModule } from './status/status.module';
 
 @Module({
   imports: [
@@ -28,6 +29,7 @@ import { FavoritesModule } from './favorites/favorites.module';
     UsersModule,
     FavoritesModule,
     CommentsModule,
+    StatusModule,
   ],
   controllers: [AppController, AuthController],
   providers: [AppService, AuthService, JwtStrategyService],
