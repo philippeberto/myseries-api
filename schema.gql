@@ -15,11 +15,6 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
-type Serie {
-  id: String!
-  name: String!
-}
-
 type Comment {
   id: String!
   userId: String!
@@ -29,10 +24,16 @@ type Comment {
   updatedAt: DateTime!
 }
 
+type FavoritePublic {
+  id: String!
+  userId: String!
+  favoritesList: [String!]!
+}
+
 type Query {
   findAllUsers: [User!]!
   findUser(id: String!): User!
-  series(id: Int!): Serie!
+  findFavoritesByUser: FavoritePublic!
   findAllCommentByTitle(title: String!): [Comment!]!
   findOneComment(id: String!): Comment!
 }
@@ -41,9 +42,8 @@ type Mutation {
   createUser: Boolean!
   updateUser(input: UpdateUserInput!): User!
   removeUser(id: String!): Boolean!
-  createSeries(createSeriesInput: CreateSeriesInput!): Serie!
-  updateSeries(updateSeriesInput: UpdateSeriesInput!): Serie!
-  removeSeries(id: Int!): Serie!
+  addFavorite(imdbId: String!): FavoritePublic!
+  removeFavorite(imdbId: String!): FavoritePublic!
   createComment(input: CreateCommentInput!): Comment!
   updateComment(input: UpdateCommentInput!): Boolean!
   removeComment(id: Int!): Comment!
@@ -54,15 +54,6 @@ input UpdateUserInput {
   name: String
   email: String
   roles: [String!]
-}
-
-input CreateSeriesInput {
-  name: String!
-}
-
-input UpdateSeriesInput {
-  name: String
-  id: Int!
 }
 
 input CreateCommentInput {

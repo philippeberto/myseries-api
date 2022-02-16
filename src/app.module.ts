@@ -9,8 +9,8 @@ import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
 import { JwtStrategyService } from './auth/jwt-strategy.service';
 import { HttpModule } from '@nestjs/axios';
-import { SeriesModule } from './series/series.module';
 import { CommentsModule } from './comments/comments.module';
+import { FavoritesModule } from './favorites/favorites.module';
 
 @Module({
   imports: [
@@ -26,7 +26,7 @@ import { CommentsModule } from './comments/comments.module';
     }),
     HttpModule,
     UsersModule,
-    SeriesModule,
+    FavoritesModule,
     CommentsModule,
   ],
   controllers: [AppController, AuthController],
