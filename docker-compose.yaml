@@ -10,7 +10,7 @@ services:
     ports:
       - "15432:5432"
     volumes:
-      - ./PostgreSQL:/var/lib/postgresql/data 
+      - ../PostgreSQL:/var/lib/postgresql/data 
     extra_hosts:
       - host.docker.interntal:host-gateway
       
@@ -18,8 +18,8 @@ services:
     image: dpage/pgadmin4
     container_name: mspgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: "user@email.com"
-      PGADMIN_DEFAULT_PASSWORD: "PgAdmin2022!"
+      PGADMIN_DEFAULT_EMAIL: "admin@email.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
     ports:
       - "16543:80"
     depends_on:
@@ -37,8 +37,8 @@ services:
         DB_USER: postgres
         DB_SCHEMA: public
         DB_PASSWORD: pass2022
-        KEYCLOAK_USER: root
-        KEYCLOAK_PASSWORD: Pa55w0rd
+        KEYCLOAK_USER: adminn
+        KEYCLOAK_PASSWORD: admin
         # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
         #JDBC_PARAMS: "ssl=true"
       ports:

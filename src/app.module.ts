@@ -7,10 +7,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { AuthController } from './auth/auth.controller';
 import { AuthService } from './auth/auth.service';
-import { AuthModule } from './auth/auth.module';
 import { JwtStrategyService } from './auth/jwt-strategy.service';
 import { HttpModule } from '@nestjs/axios';
 import { SeriesModule } from './series/series.module';
+import { CommentsModule } from './comments/comments.module';
 
 @Module({
   imports: [
@@ -25,9 +25,9 @@ import { SeriesModule } from './series/series.module';
       autoSchemaFile: 'schema.gql',
     }),
     HttpModule,
-    AuthModule,
     UsersModule,
     SeriesModule,
+    CommentsModule,
   ],
   controllers: [AppController, AuthController],
   providers: [AppService, AuthService, JwtStrategyService],

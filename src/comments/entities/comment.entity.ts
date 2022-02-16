@@ -8,20 +8,20 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('users')
-export class User extends BaseEntity {
+@Entity('comments')
+export class Comment extends BaseEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ length: 250 })
-  name: string;
+  @Column('uuid')
+  @Index('user_index')
+  userId: string;
 
-  @Index()
-  @Column({ length: 450, unique: true })
-  email: string;
+  @Column()
+  imdbId: string;
 
-  @Column('simple-array')
-  roles: string[];
+  @Column({ length: 500, nullable: true })
+  text: string;
 
   @CreateDateColumn()
   createdAt: Date;

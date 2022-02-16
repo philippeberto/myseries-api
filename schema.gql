@@ -20,10 +20,21 @@ type Serie {
   name: String!
 }
 
+type Comment {
+  id: String!
+  userId: String!
+  imdbId: String!
+  text: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
 type Query {
   findAllUsers: [User!]!
   findUser(id: String!): User!
   series(id: Int!): Serie!
+  findAllCommentByTitle(title: String!): [Comment!]!
+  findOneComment(id: String!): Comment!
 }
 
 type Mutation {
@@ -33,6 +44,9 @@ type Mutation {
   createSeries(createSeriesInput: CreateSeriesInput!): Serie!
   updateSeries(updateSeriesInput: UpdateSeriesInput!): Serie!
   removeSeries(id: Int!): Serie!
+  createComment(input: CreateCommentInput!): Comment!
+  updateComment(input: UpdateCommentInput!): Boolean!
+  removeComment(id: Int!): Comment!
 }
 
 input UpdateUserInput {
@@ -49,4 +63,14 @@ input CreateSeriesInput {
 input UpdateSeriesInput {
   name: String
   id: Int!
+}
+
+input CreateCommentInput {
+  imdbId: String!
+  text: String!
+}
+
+input UpdateCommentInput {
+  id: String!
+  text: String!
 }
