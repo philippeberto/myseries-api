@@ -3,12 +3,13 @@ on:
   pull_request:
     branches:
       - dev
-  strategy:
-    matrix:
-      node: ['12', '14', '16']
+
 jobs:
   check-application:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['12', '14', '16']
     steps:
       - uses: actions/checkout@v2 #coloca os arquivos que foram subidos em uma máquina ubuntu.
       - uses: actions/setup-node@v2
