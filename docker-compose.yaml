@@ -48,11 +48,32 @@ services:
       extra_hosts:
       - host.docker.interntal:host-gateway
 
-  ms-api:
-    container_name: ms-api
-    image: ms-api
-    build: .
+  ms-api-dev:
+    container_name: ms-api-dev
+    image: ms-api-dev
+    build:
+      context: .
+      target: dev
     entrypoint: sh -c "npm install && npm run start:dev"
+    ports:
+        - '3003:3000'
+        - '3010:3010'
+    extra_hosts:
+      - host.docker.interntal:host-gateway
+    env_file:
+        - './.env'
+    volumes:
+        - '.:/app'
+        - './node_modules:/app/node_modules'
+    restart: unless-stopped
+
+  ms-api-prod:
+    container_name: ms-api-prod
+    image: philippeberto/myseries-api
+    build:
+      context: .
+      target: prod
+    # entrypoint: sh -c "npm install && npm run build && node dist/main"
     ports:
         - '3000:3000'
         - '3010:3010'
@@ -64,7 +85,6 @@ services:
         - '.:/app'
         - './node_modules:/app/node_modules'
     restart: unless-stopped
-
 networks:
   default:
     name: ms-network
