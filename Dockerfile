@@ -1,10 +1,4 @@
-FROM node:16-alpine3.14 AS dev
-
-WORKDIR /app
-
-COPY . .
-
-FROM node:16-alpine3.14 AS prod
+FROM node:16-alpine3.14
 
 WORKDIR /app
 
