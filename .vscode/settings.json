@@ -1,5 +1,11 @@
 {
-  "conventionalCommits.scopes": ["comments", "favorites", "status", "git"],
+  "conventionalCommits.scopes": [
+    "comments",
+    "favorites",
+    "status",
+    "git",
+    "docker"
+  ],
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#792441",
     "activityBar.activeBorder": "#000000",
