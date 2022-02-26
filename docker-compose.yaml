@@ -48,13 +48,15 @@ services:
       extra_hosts:
       - host.docker.interntal:host-gateway
 
-  ms-api:
-    container_name: ms-api
-    image: ms-api
-    build: .
+  msapi-dev:
+    container_name: msapi-dev
+    image: msapi-dev
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
     entrypoint: sh -c "npm install && npm run start:dev"
     ports:
-        - '3000:3000'
+        - '3003:3000'
         - '3010:3010'
     extra_hosts:
       - host.docker.interntal:host-gateway
