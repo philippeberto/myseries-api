@@ -18,7 +18,7 @@ jobs:
       - run: npm install
       - run: npm run test users/users.service.spec.ts
 
-  docker-build-push:
+  docker-build-push-prod:
     runs-on: ubuntu-latest
     steps:
     - name: Set up QEMU
@@ -41,7 +41,7 @@ jobs:
         tags: philippeberto/myseries-api:latest
         secrets: |
             KEYCLOAK_PUBLIC_KEY=${{ secrets.MYTOKEN }}
-            POSTGRE_URL_CONNECTION=${{ secrets.POSTGRE_URL_CONNECTION }}
+            POSTGRE_URL_CONNECTION_PROD=${{ secrets.POSTGRE_URL_CONNECTION_PROD }}
             BASE_KEYCLOAK_URL=${{ secrets.BASE_KEYCLOAK_URL }}
             KEYCLOAK_CLIENT_ID=${{ secrets.KEYCLOAK_CLIENT_ID }}
             KEYCLOAK_CLIENT_SECRET=${{ secrets.KEYCLOAK_CLIENT_SECRET }}
