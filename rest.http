@@ -1,10 +1,10 @@
-POST http://localhost:8080/auth/realms/MySeries/protocol/openid-connect/token
+POST http://auth.ninjaesperto.com.br/auth/realms/myseries/protocol/openid-connect/token
 Content-Type: application/x-www-form-urlencoded
 
 
 &grant_type=password
-&client_id=ms-api
-&client_secret=NwWB7B3Cs1sebtUfTkAioUTfxnABW23W
+&client_id=myseries-api-prod
+&client_secret=aL4gclbbQBhBsENmpTLINUfqseUQAmgZ
 &username=isaac-newton@email.com
 &password=123456
 

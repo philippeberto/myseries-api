@@ -4,7 +4,8 @@
     "favorites",
     "status",
     "git",
-    "docker"
+    "docker",
+    "config"
   ],
   "workbench.colorCustomizations": {
     "activityBar.activeBackground": "#792441",
