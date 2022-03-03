@@ -18,7 +18,9 @@ import { StatusModule } from './status/status.module';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      url: process.env.POSTGRE_URL_CONNECTION,
+      url: process.env.ENV_PRODUCTION
+        ? process.env.POSTGRE_URL_CONNECTION_PROD
+        : process.env.POSTGRE_URL_CONNECTION_LOCAL,
       autoLoadEntities: true,
       synchronize: true,
     }),
