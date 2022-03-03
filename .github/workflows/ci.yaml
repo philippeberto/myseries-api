@@ -42,6 +42,7 @@ jobs:
         secrets: |
             KEYCLOAK_PUBLIC_KEY=${{ secrets.MYTOKEN }}
             POSTGRE_URL_CONNECTION_PROD=${{ secrets.POSTGRE_URL_CONNECTION_PROD }}
+            POSTGRE_URL_CONNECTION=${{ secrets.POSTGRE_URL_CONNECTION }}
             BASE_KEYCLOAK_URL=${{ secrets.BASE_KEYCLOAK_URL }}
             KEYCLOAK_CLIENT_ID=${{ secrets.KEYCLOAK_CLIENT_ID }}
             KEYCLOAK_CLIENT_SECRET=${{ secrets.KEYCLOAK_CLIENT_SECRET }}
